@@ -4,9 +4,51 @@ sources:
   - name: raw
     schema: gz_raw_data
     tables:
-    - name: sales
-      identifier: raw_gz_sales
-    - name: product
-      identifier: raw_gz_product
-    - name: ship
-      identifier: raw_gz_ship
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales of Greenweez / we have on row per product_id found in each orders_id
+        loaded_at_field: "cast(date_date AS timestamp)"
+        freshness: 
+          warn_after: {count: 90, period: day}
+        columns:
+          - name: date_date
+            description: date of purchase
+          - name: orders_id
+            description: orders identifier
+            tests:
+              - not_null
+          - name: products_id
+            description: products identifier
+          - name: revenue
+            description: total money generated
+          - name: quantity
+            description: number of sales
+      - name: product
+        identifier: raw_gz_product
+        description: products of Greenweez
+        columns:
+          - name: products_id
+            description: products identifier
+            tests:
+              - not_null
+              - unique
+          - name: purchase_price
+            description: price when the product was purchased
+      - name: ship
+        identifier: raw_gz_ship
+        description: Greenweez logistics info
+        columns:
+          - name: orders_id
+            description: orders identifier
+            tests:
+              - not_null
+              - unique
+          - name: shipping_fee
+            description: shipping fee
+          - name: logcost
+            description: cost of logistics
+          - name: ship_cost
+            description: shipping costs
+
+     
+    
