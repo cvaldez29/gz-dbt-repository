@@ -5,6 +5,7 @@ im.date_date,
 im.quantity,
 im.purchase_cost,
 im.margin,
+im.revenue
 sh.shipping_fee,
 sh.logcost,
 sh.ship_cost
