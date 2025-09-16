@@ -49,6 +49,105 @@ sources:
             description: cost of logistics
           - name: ship_cost
             description: shipping costs
-
+models:
+  - name: int_orders_margin
+    description: tabla intermedia de orders
+    columns:
+      - name: orders_id
+        description: orders identifier
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description: date of transaction
+        tests:
+          - not_null
+      - name: revenue
+        description: ganancias menos costos
+        tests:
+          - not_null
+      - name: quantity
+        description: cantidad de transacciones
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: costo de compra
+        tests:
+          - not_null
+      - name: margin
+        description: margen de ganancias
+        tests:
+          - not_null
+  - name: int_orders_operational
+    description: join entre tabla intermedia de orders y ship raw
+    columns:
+      - name: orders_id
+        description: orders identifier
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description: date
+        tests:
+          - not_null
+      - name: operational_margin
+        description: operational margin
+        tests:
+          - not_null
+      - name: quantity
+        description: cantidad
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: costo de compra
+        tests:
+          - not_null
+      - name: margin
+        description: margen de ganancia
+        tests:
+          - not_null
+      - name: revenue
+        description: ganancias menos costos
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: cuota de envio
+        tests:
+          - not_null
+      - name: logcost
+        description: costo de logistica
+        tests:
+          - not_null
+  - name: int_sales_margin
+    description: tabla intermedia de sales
+    columns:
+      - name: date_date
+        description: fecha de trnasaccion
+        tests:
+          - not_null
+      - name: orders_id
+        description: identificador de ordenes
+        tests:
+          - not_null
+      - name: products_id
+        description: identificador de productos
+        tests:
+          - not_null
+      - name: revenue
+        description: revenue
+        tests:
+          - not_null
+      - name: quantity
+        description: cantidad
+        tests:
+          - not_null
+      - name: purchase_price
+        description: costo de compra
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: margen
+        tests:
+          - not_null
      
     
