@@ -189,4 +189,15 @@ models:
         description: number of clicks received from the ads
         tests:
           - not_null
-    
+  - name: finance_campaigns_month
+    description: monthly metrics
+    columns:
+      - name: datemonth
+        description: month in yyyy-mm format
+        tests:
+          - not_null
+          - unique
+      - name: operational_margin
+        description: operational margin minus costs
+      - name: quantity
+        description: quantity

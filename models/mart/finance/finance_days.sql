@@ -8,7 +8,8 @@ select
     sum(purchase_cost) as purchase_cost,
     sum(shipping_fee) as shipping_fee,
     sum(logcost) as log_cost,
-    sum(quantity) as quantity
+    sum(quantity) as quantity,
+    sum(ship_cost) as ship_cost
 from {{ref('int_orders_operational')}}
 group by date_date
 order by date_date desc
