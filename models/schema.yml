@@ -1,6 +1,7 @@
 version: 2
 
 sources:
+
   - name: raw
     schema: gz_raw_data
     tables:
@@ -49,6 +50,14 @@ sources:
             description: cost of logistics
           - name: ship_cost
             description: shipping costs
+      - name: adwords
+        identifier: raw_gz_adwords
+      - name: bing
+        identifier: raw_gz_bing
+      - name: criteo
+        identifier: raw_gz_criteo
+      - name: facebook
+        identifier: raw_gz_facebook
 models:
   - name: int_orders_margin
     description: tabla intermedia de orders
@@ -149,5 +158,35 @@ models:
         description: margen
         tests:
           - not_null
-     
+  - name: int_campaigns
+    description: Intermediate model that unifies all advertising campaigns (Adwords, Bing, Criteo, Facebook) into one dataset for Finance reporting
+    columns:
+      - name: date_date
+        description: date
+        tests:
+          - not_null
+      - name: paid_source
+        description: source from payment
+        tests:
+          - not_null
+      - name: campaign_key
+        description: key from the campaign
+        tests:
+          - not_null
+      - name: campaign_name
+        description: name of the campaign
+        tests:
+          - not_null
+      - name: ads_cost
+        description: cost of the advertising campaign
+        tests:
+          - not_null
+      - name: impression
+        description: impressions form the campaign
+        tests:
+          - not_null
+      - name: click
+        description: number of clicks received from the ads
+        tests:
+          - not_null
     
